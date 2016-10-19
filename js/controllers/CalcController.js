@@ -25,7 +25,7 @@ calc.controller('CalcController', function($scope) {
 		};
 	};
 	$scope.res = function(inAmount) {
-	 	return inAmount / $scope.currency.rate;
+		return inAmount / $scope.currency.rate;
 	 };
 	// $scope.setCurrencyUsd = function() {
 	// 	$scope.currency.name = 'USD';

@@ -41,7 +41,10 @@
 				</article>
 				<section class="panel-body">
 				<article class="col-md-6">
-					<p class="alert alert-success">Сумма ({{ currency.title }}): {{ res(inputAmount) | number:2 }}</p>
+					<section class="input-group">
+						<span class="input-group-addon">Сумма ({{ currency.title }}):</span>
+						<input class="form-control" type="text" value="{{ res(inputAmount) | number:2 }}">
+					</section>
 				</article>
 				</section>
 			</section>
