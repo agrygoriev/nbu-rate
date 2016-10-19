@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Currency converter</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+  	<link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
+  	<link href="css/main.css" rel="stylesheet" />
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+<body ng-app="calcApp">
+	<div class="header">
+		<div class="container">
+			<h3>Конвертер валют по курсу НБУ</h3>
+		</div>
+	</div>
+	<div class="main" ng-controller="CalcController">
+		<article class="container" >
+			<section class="row panel">
+				<article class="col-md-6">
+					<section class="input-group panel-body">
+						<span class="input-group-addon">Сумма (гривни):</span>
+						<input type="number" class="form-control" placeholder="Введите сумму в гривнях..." ng-model="inputAmount">
+					</section>
+				</article>
+				<article class="col-md-6 panel-body">
+					<label>Выберите валюту:</label>
+						<section class="btn-group" role="group" aria-label="">
+							<button type="button" class="btn btn-default" ng-click="setCurrency('USD')">доллар США</button>
+							<button type="button" class="btn btn-default" ng-click="setCurrency('EUR')">евро</button>
+							<button type="button" class="btn btn-default" ng-click="setCurrency('GBP')">фунты стерлингов</button>
+							<br>
+						</section>
+				</article>
+			</section>
+			<section class="row panel">
+				<article class="col-md-6">
+					<section class="input-group panel-body">
+						<span class="input-group-addon">Курс UAH/{{ currency.name }}</span>
+						<input type="number" class="form-control" placeholder="Введите курс" ng-model="currency.rate">
+					</section>
+				</article>
+				<section class="panel-body">
+				<article class="col-md-6">
+					<p class="alert alert-success">Сумма ({{ currency.title }}): {{ res(inputAmount) | number:2 }}</p>
+				</article>
+				</section>
+			</section>
+			<!-- <p class="alert alert-success">Сумма в евро: {{ inputAmount / currency.rate | number:2 }}</p> -->
+			<!-- <p class="alert alert-success">Сумма в гривнях: {{ inputAmount | number:2 }}</p> -->
+		</article>
+	</div>
+	<script src="js/calc.js"></script>
+	<script src="js/controllers/CalcController.js"></script>
+</body>
+</html>
