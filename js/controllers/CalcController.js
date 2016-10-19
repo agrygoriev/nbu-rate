@@ -27,14 +27,4 @@ calc.controller('CalcController', function($scope) {
 	$scope.res = function(inAmount) {
 		return inAmount / $scope.currency.rate;
 	 };
-	// $scope.setCurrencyUsd = function() {
-	// 	$scope.currency.name = 'USD';
-	// 	$scope.currency.title = 'доллар США'
-	// 	$scope.currency.rate = 25.66;
-	// };
-	// $scope.setCurrencyEur = function() {
-	// 	$scope.currency.name = 'EUR';
-	// 	$scope.currency.title = 'евро'
-	// 	$scope.currency.rate = 28.42;
-	// }
 });
