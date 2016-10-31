@@ -1,1 +1,0 @@
-var calc = angular.module("calcApp", []);
