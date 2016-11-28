@@ -7,39 +7,41 @@
 	<link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
   	<link href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
   	<script src="./node_modules/angular/angular.min.js"></script>
+  	<link rel="stylesheet" href="./app/css/style.css">
   	
 </head>
 <body ng-app="calcApp">
 	<header class="header">
-		<div layout="row" layout-align="center center">
+		<!-- <div layout="row" layout-align="center center">
 			<h1 class="md-display-2">Конвертер валют по курсу НБУ</h1>
-		</div>
+		</div> -->
 	</header>
 	<main class="main" ng-controller="CalcController">
 		<article class="container" >
 			<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 				<md-input-container class="md-block">
-					<md-button class="md-raised" ng-click="setCurrency('USD')">доллары США</md-button>
-					<md-button class="md-raised" ng-click="setCurrency('EUR')">евро</md-button>
-					<md-button class="md-raised" ng-click="setCurrency('GBP')">фунты стерлингов</md-button>
+					<md-button class="md-raised" ng-click="getRate('USD', data.inputDate)">доллары США</md-button>
+					<md-button class="md-raised" ng-click="getRate('EUR', data.inputDate)">евро</md-button>
+					<md-button class="md-raised" ng-click="getRate('GBP', data.inputDate)">фунты стерлингов</md-button>
 				</md-input-container>
 			</section>
 			<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 				<md-input-container class="md-block" layout="row" layout-sm="column" layout-align="left center">
 					<label>Сумма (гривни):</label>
-					<input type="number" ng-model="inputAmount">
+					<input type="number" string-to-number ng-model="inputAmount">
 				</md-input-container>
 				<md-input-container>
             		<label>Выберите дату</label>
-            		<md-datepicker ng-model="date"></md-datepicker>
+            		<md-datepicker ng-model="data.inputDate"></md-datepicker>
           		</md-input-container>
 				<md-input-container class="md-block">
 					<label>Курс UAH/{{ currency.name }}</label>
-					<input type="number" ng-model="currency.rate">
+					<input type="number" string-to-number ng-model="currency.rate">
 				</md-input-container>
 				<section layout="row" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" layout-align="center center" ng-cloak>
 					<article class="padded" md-whiteframe="1"   flex-sm="40" flex-gt-sm="30" flex-gt-md="20" layout>
 						<h2 class="md-subhead">Сумма ({{ currency.title }}):</h2>
+						<h2 class="md-subhead">На дату {{ currency.date }}</h2>
 					</article>
 					<article class="padded" md-whiteframe="2"   flex-sm="40" flex-gt-sm="30" flex-gt-md="20" layout layout-align="center center">
 						<h2 class="md-subhead"> {{ res(inputAmount) | number:2 }} </h2>
@@ -47,7 +49,7 @@
 				</section>
 				<!-- <md-input-container class="md-block">
 					<label>Сумма ({{ currency.title }}): {{ res(inputAmount) | number:2 }} </label>
-					<!-- <input type="number" ng-model="res(inputAmount)"> -->
+					<input type="number" ng-model="res(inputAmount)"> -->
 				</md-input-container>
 			</section>
 				</section>
